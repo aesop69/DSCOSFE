@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debian Sid Command Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-navigation">Skip to main content</a>
+
+    <!-- TOP NAVIGATION BAR -->
+    <header>
+        <nav role="navigation">
+            <a href="index.html" aria-label="Home page">Home</a>
+            <input type="text" id="search" placeholder="Search commands..." aria-label="Search commands">
+            <button aria-label="Toggle dark mode" onclick="toggleDarkMode()">Dark Mode</button>
+            <button aria-label="Open settings" onclick="openSettings()">Settings</button>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" role="main">
+        <h1>Debian Sid Command Explorer</h1>
+        <p>Navigate through structured command documentation with interactive syntax explanations and examples.</p>
+
+        <!-- Command Categories -->
+        <section aria-label="File Management Commands">
+            <button class="collapsible" aria-controls="file-management-content">File Management</button>
+            <div id="file-management-content" class="content" role="region">
+                <ul>
+                    <li><a href="data/commands/find.html" aria-label="Find command documentation">Find</a></li>
+                    <li><a href="data/commands/ls.html" aria-label="List directory contents command documentation">ls</a></li>
+                    <li><a href="data/commands/rm.html" aria-label="Remove files command documentation">rm</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section aria-label="Process Management Commands">
+            <button class="collapsible" aria-controls="process-management-content">Process Management</button>
+            <div id="process-management-content" class="content" role="region">
+                <ul>
+                    <li><a href="data/commands/ps.html" aria-label="Process status command documentation">ps</a></li>
+                    <li><a href="data/commands/kill.html" aria-label="Terminate processes command documentation">kill</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section aria-label="Networking Commands">
+            <button class="collapsible" aria-controls="networking-content">Networking & Connectivity</button>
+            <div id="networking-content" class="content" role="region">
+                <ul>
+                    <li><a href="data/commands/ping.html" aria-label="Network connectivity test command documentation">ping</a></li>
+                    <li><a href="data/commands/curl.html" aria-label="Transfer data from or to a server command documentation">curl</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Indicator -->
+    <div class="loading" aria-hidden="true">
+        <div class="loading-spinner"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>find Command Manual</title>
+    <style>
+        :root {
+            --primary-color: #ff9900;  /* Main orange */
+            --secondary-color: #ff7f00;  /* Darker orange for links */
+            --text-color: #f4f4f4;
+            --bg-dark: #1a1a1a;
+            --bg-light: #ffffff;
+            --border-color: #ff9900;
+            --hover-shadow: 0px 0px 15px var(--primary-color);
+            --transition: all 0.3s ease;
+            --link-color: #ff7f00;  /* Darker orange for links */
+            --visited-color: #cc6600;  /* Even darker orange for visited links */
+            --hover-color: #ffbf00;  /* Lighter orange for hover */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .command-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin: 20px 0;
+        }
+
+        .help-info {
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 10px;
+            padding: 15px;
+            background-color: var(--bg-light);
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0px 0px 8px var(--primary-color);
+        }
+
+        .collapsible {
+            background-color: #222;
+            color: var(--secondary-color);
+            cursor: pointer;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0px 0px 8px var(--primary-color);
+            width: auto;
+            border-radius: 4px;
+            transition: var(--transition);
+            margin-bottom: 5px;
+        }
+
+        .collapsible:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .example {
+            background-color: var(--bg-light);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: var(--visited-color);
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            margin: 20px 0 10px;
+        }
+
+        pre {
+            margin: 0;
+            padding: 10px;
+            background-color: var(--bg-light);
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+            background: #222;
+            box-shadow: 0px 0px 12px var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        nav a, nav input, nav button {
+            padding: 10px;
+            background: transparent;
+            color: #00ff00;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav button:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* Man Page Sections */
+        .man-section {
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .man-section h2 {
+            margin-top: 0;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .man-section pre {
+            margin: 10px 0;
+        }
+
+        /* Option Links */
+        .option-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .option-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Clickable Options */
+        .clickable-option {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .clickable-option:hover {
+            background-color: rgba(255, 153, 0, 0.1);
+        }
+
+        /* Collapsible Sections */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #282828;
+            border-radius: 4px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .section-header:hover {
+            background-color: #303030;
+        }
+
+        .section-header .indicator {
+            transition: transform 0.3s ease;
+        }
+
+        .section-header.expanded .indicator {
+            transform: rotate(90deg);
+        }
+
+        .section-content {
+            display: none;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .section-content.expanded {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav role="navigation">
+        <a href="../../index.html" aria-label="Home page">Home</a>
+        <input type="text" id="search" placeholder="Search commands..." aria-label="Search commands">
+        <button aria-label="Toggle dark mode" onclick="toggleDarkMode()">Dark Mode</button>
+        <button aria-label="Open settings" onclick="openSettings()">Settings</button>
+    </nav>
+
+    <main role="main">
+        <h1 class="command-title">find</h1>
+
+        <!-- Help Info -->
+        <section>
+            <button class="collapsible" aria-controls="help-content">▶ Help Info (`find --help`)</button>
+            <div id="help-content" class="content">
+                <pre class="help-info">Usage: find [-H] [-L] [-P] [-Olevel] [<a href='../examples/find-examples.html#-D'>-D</a> debugopts] [path...] [expression]
+
+Default path is the current directory; default expression is -print.
+Expression may consist of: operators, options, tests, and actions.
+
+Operators (decreasing precedence; <a href='../examples/find-examples.html#-and'>-and</a> is implicit where no others are given):
+      ( EXPR )   ! EXPR   <a href='../examples/find-examples.html#-not'>-not</a> EXPR   EXPR1 <a href='../examples/find-examples.html#-a'>-a</a> EXPR2   EXPR1 <a href='../examples/find-examples.html#-and'>-and</a> EXPR2
+      EXPR1 <a href='../examples/find-examples.html#-o'>-o</a> EXPR2   EXPR1 <a href='../examples/find-examples.html#-or'>-or</a> EXPR2   EXPR1 , EXPR2
+
+Positional options (always true):
+      <a href='../examples/find-examples.html#-daystart'>-daystart</a> <a href='../examples/find-examples.html#-follow'>-follow</a> <a href='../examples/find-examples.html#-nowarn'>-nowarn</a> <a href='../examples/find-examples.html#-regextype'>-regextype</a> <a href='../examples/find-examples.html#-warn'>-warn</a>
+
+Normal options (always true, specified before other expressions):
+      <a href='../examples/find-examples.html#-depth'>-depth</a> -files0<a href='../examples/find-examples.html#-from'>-from</a> FILE <a href='../examples/find-examples.html#-maxdepth'>-maxdepth</a> LEVELS <a href='../examples/find-examples.html#-mindepth'>-mindepth</a> LEVELS
+      <a href='../examples/find-examples.html#-mount'>-mount</a> <a href='../examples/find-examples.html#-noleaf'>-noleaf</a> <a href='../examples/find-examples.html#-xdev'>-xdev</a> -ignore_readdir_race -noignore_readdir_race
+
+Tests (N can be +N or <a href='../examples/find-examples.html#-N'>-N</a> or N):
+      <a href='../examples/find-examples.html#-amin'>-amin</a> N <a href='../examples/find-examples.html#-anewer'>-anewer</a> FILE <a href='../examples/find-examples.html#-atime'>-atime</a> N <a href='../examples/find-examples.html#-cmin'>-cmin</a> N <a href='../examples/find-examples.html#-cnewer'>-cnewer</a> FILE <a href='../examples/find-examples.html#-context'>-context</a> CONTEXT
+      <a href='../examples/find-examples.html#-ctime'>-ctime</a> N <a href='../examples/find-examples.html#-empty'>-empty</a> <a href='../examples/find-examples.html#-false'>-false</a> <a href='../examples/find-examples.html#-fstype'>-fstype</a> TYPE <a href='../examples/find-examples.html#-gid'>-gid</a> N <a href='../examples/find-examples.html#-group'>-group</a> NAME <a href='../examples/find-examples.html#-ilname'>-ilname</a> PATTERN
+      <a href='../examples/find-examples.html#-iname'>-iname</a> PATTERN <a href='../examples/find-examples.html#-inum'>-inum</a> N <a href='../examples/find-examples.html#-iwholename'>-iwholename</a> PATTERN <a href='../examples/find-examples.html#-iregex'>-iregex</a> PATTERN
+      <a href='../examples/find-examples.html#-links'>-links</a> N <a href='../examples/find-examples.html#-lname'>-lname</a> PATTERN <a href='../examples/find-examples.html#-mmin'>-mmin</a> N <a href='../examples/find-examples.html#-mtime'>-mtime</a> N <a href='../examples/find-examples.html#-name'>-name</a> PATTERN <a href='../examples/find-examples.html#-newer'>-newer</a> FILE
+      <a href='../examples/find-examples.html#-nouser'>-nouser</a> <a href='../examples/find-examples.html#-nogroup'>-nogroup</a> <a href='../examples/find-examples.html#-path'>-path</a> PATTERN <a href='../examples/find-examples.html#-perm'>-perm</a> [-/]MODE <a href='../examples/find-examples.html#-regex'>-regex</a> PATTERN
+      <a href='../examples/find-examples.html#-readable'>-readable</a> <a href='../examples/find-examples.html#-writable'>-writable</a> <a href='../examples/find-examples.html#-executable'>-executable</a>
+      <a href='../examples/find-examples.html#-wholename'>-wholename</a> PATTERN <a href='../examples/find-examples.html#-size'>-size</a> N[bcwkMG] <a href='../examples/find-examples.html#-true'>-true</a> <a href='../examples/find-examples.html#-type'>-type</a> [bcdpflsD] <a href='../examples/find-examples.html#-uid'>-uid</a> N
+      <a href='../examples/find-examples.html#-used'>-used</a> N <a href='../examples/find-examples.html#-user'>-user</a> NAME <a href='../examples/find-examples.html#-xtype'>-xtype</a> [bcdpfls]
+
+Actions:
+      <a href='../examples/find-examples.html#-delete'>-delete</a> <a href='../examples/find-examples.html#-print0'>-print0</a> <a href='../examples/find-examples.html#-printf'>-printf</a> FORMAT <a href='../examples/find-examples.html#-fprintf'>-fprintf</a> FILE FORMAT <a href='../examples/find-examples.html#-print'>-print</a> 
+      <a href='../examples/find-examples.html#-fprint0'>-fprint0</a> FILE <a href='../examples/find-examples.html#-fprint'>-fprint</a> FILE <a href='../examples/find-examples.html#-ls'>-ls</a> <a href='../examples/find-examples.html#-fls'>-fls</a> FILE <a href='../examples/find-examples.html#-prune'>-prune</a> <a href='../examples/find-examples.html#-quit'>-quit</a>
+      <a href='../examples/find-examples.html#-exec'>-exec</a> COMMAND ; <a href='../examples/find-examples.html#-exec'>-exec</a> COMMAND {} + <a href='../examples/find-examples.html#-ok'>-ok</a> COMMAND ;
+      <a href='../examples/find-examples.html#-execdir'>-execdir</a> COMMAND ; <a href='../examples/find-examples.html#-execdir'>-execdir</a> COMMAND {} + <a href='../examples/find-examples.html#-okdir'>-okdir</a> COMMAND ;
+
+Other common options:
+      <a href='../examples/find-examples.html#--help'>--help</a>                   display this help and exit
+      <a href='../examples/find-examples.html#--version'>--version</a>                output version information and exit
+
+Valid arguments for -D:
+exec, opt, rates, search, stat, time, tree, all, help
+Use '<a href='../examples/find-examples.html#-D'>-D</a> help' for a description of the options, or see find(1)
+
+Please see also the documentation at https://www.gnu.org/software/findutils/.
+You can report (and track progress on fixing) bugs in the "find"
+program via the GNU findutils bug<a href='../examples/find-examples.html#-reporting'>-reporting</a> page at
+https://savannah.gnu.org/bugs/?group=findutils or, if
+you have no web access, by sending email to <bug-findutils@gnu.org>.
+</pre>
+            </div>
+        </section>
+
+        <!-- Man Page -->
+        <section>
+            <button class="collapsible" aria-controls="man-content">▶ Man Page (`find.1`)</button>
+            <div id="man-content" class="content">
+                <!-- Split man content into sections -->
+                
+            </div>
+        </section>
+
+        <!-- Examples -->
+        <section>
+            <button class="collapsible" aria-controls="examples-content">▶ Examples</button>
+            <div id="examples-content" class="content">
+                
+        <div class="example">
+            <h3><a href="#-name" id="-name">-name</a></h3>
+            <pre>find /home -name "*.txt"
+find /var/log -name "error.log"
+find /tmp -name "backup.tar.gz"
+</pre>
+        </div>
+        
+        <div class="example">
+            <h3><a href="#-type" id="-type">-type</a></h3>
+            <pre>find /etc -type f
+find /usr/bin -type d
+find /dev -type l
+</pre>
+        </div>
+        
+        <div class="example">
+            <h3><a href="#-exec" id="-exec">-exec</a></h3>
+            <pre>find /tmp -type f -name "*.log" -exec rm {} \;
+find /home -type f -name "*.sh" -exec chmod +x {} \;
+find /var/www -type d -exec chmod 755 {} \;
+</pre>
+        </div>
+        
+        <div class="example">
+            <h3><a href="#-mtime" id="-mtime">-mtime</a></h3>
+            <pre>find /logs -mtime -7
+find /var/backups -mtime +30
+find /tmp -mtime 0
+</pre>
+        </div>
+        
+        <div class="example">
+            <h3><a href="#-size" id="-size">-size</a></h3>
+            <pre>find /data -size +100M
+find /home/user -size -1K
+find /videos -size +500M
+</pre>
+        </div>
+        
+        <div class="example">
+            <h3><a href="#-user" id="-user">-user</a></h3>
+            <pre>find /home -user alice
+find /var -user root
+find /tmp -user guest
+</pre>
+        </div>
+        
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Indicator -->
+    <div class="loading" aria-hidden="true">
+        <div class="loading-spinner"></div>
+    </div>
+</body>
+</html>

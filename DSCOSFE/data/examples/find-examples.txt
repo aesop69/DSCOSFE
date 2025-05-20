@@ -1,0 +1,29 @@
+#-name
+find /home -name "*.txt"
+find /var/log -name "error.log"
+find /tmp -name "backup.tar.gz"
+
+#-type
+find /etc -type f
+find /usr/bin -type d
+find /dev -type l
+
+#-exec
+find /tmp -type f -name "*.log" -exec rm {} \;
+find /home -type f -name "*.sh" -exec chmod +x {} \;
+find /var/www -type d -exec chmod 755 {} \;
+
+#-mtime
+find /logs -mtime -7
+find /var/backups -mtime +30
+find /tmp -mtime 0
+
+#-size
+find /data -size +100M
+find /home/user -size -1K
+find /videos -size +500M
+
+#-user
+find /home -user alice
+find /var -user root
+find /tmp -user guest

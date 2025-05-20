@@ -1,0 +1,155 @@
+/* Version: 1.8 | Last Updated: May 20, 2025 */
+
+:root {
+    --primary-color: #ff9900;  /* Main orange */
+    --secondary-color: #ff7f00;  /* Darker orange for links */
+    --text-color: #f4f4f4;
+    --bg-dark: #1a1a1a;
+    --bg-light: #ffffff;
+    --border-color: #ff9900;
+    --hover-shadow: 0px 0px 15px var(--primary-color);
+    --transition: all 0.3s ease;
+    --link-color: #ff7f00;  /* Darker orange for links */
+    --visited-color: #cc6600;  /* Even darker orange for visited links */
+    --hover-color: #ffbf00;  /* Lighter orange for hover */
+}
+
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Accessibility */
+body {
+    margin: 0;
+    padding: 20px;
+}
+
+/* Focus styles */
+:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Centered Command Title */
+.command-title {
+    text-align: center;
+    font-size: 32px;
+    color: var(--primary-color);
+    margin: 20px 0;
+}
+
+/* Collapsible Buttons */
+.collapsible {
+    background-color: #222;
+    color: var(--secondary-color);
+    cursor: pointer;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0px 0px 8px var(--primary-color);
+    width: auto;
+    border-radius: 4px;
+    transition: var(--transition);
+    margin-bottom: 5px;
+}
+
+.collapsible:focus {
+    outline: none;
+}
+
+.content {
+    display: none;
+    padding: 18px;
+    background-color: var(--bg-dark);
+    margin-bottom: 20px;
+}
+
+/* Info Text Styling */
+.info-text {
+    font-size: 20px;
+    color: #ffd700;
+    margin: 10px 0;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    background: #222;
+    box-shadow: 0px 0px 12px var(--primary-color);
+    margin-bottom: 20px;
+}
+
+nav a, nav input, nav button {
+    padding: 10px;
+    background: transparent;
+    color: var(--link-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+nav input {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+a:visited {
+    color: var(--visited-color);
+}
+
+/* Hover Effects */
+nav button:hover, .collapsible:hover {
+    box-shadow: var(--hover-shadow);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --text-color: #ffffff;
+    --bg-dark: #121212;
+    --bg-light: #2d2d2d;
+}
+
+/* Loading States */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Command Examples */
+.command-example {
+    background: var(--bg-light);
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-family: monospace;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+    
+    nav input {
+        width: 100%;
+    }
+}

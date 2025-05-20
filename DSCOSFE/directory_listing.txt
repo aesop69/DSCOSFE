@@ -1,0 +1,86 @@
+.:
+total 2.9M
+drwxrwxr-x 5 me me 4.0K May 20 12:16 [0m[00;34m.[0m/
+drwxrwxr-x 3 me me 4.0K May 20 00:14 [00;34m..[0m/
+drwxrwxr-x 3 me me 4.0K May 18 17:21 [00;34massets[0m/
+drwxrwxr-x 2 me me 4.0K May 18 17:21 [00;34mconfig[0m/
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34mdata[0m/
+-rw-rw-r-- 1 me me 145K May 19 20:56 [00mchat-history.txt[0m
+-rw-rw-r-- 1 me me    0 May 20 12:16 [00mdirectory_listing.txt[0m
+-rw-rw-r-- 1 me me 3.2K May 20 00:27 [00mindex.html[0m
+-rw-rw-r-- 1 me me 2.7M May 19 05:29 [00mos[0m
+-rw-rw-r-- 1 me me 3.1K May 20 00:21 [00mscript.js[0m
+-rw-rw-r-- 1 me me 3.0K May 20 01:44 [00mstyles.css[0m
+
+./assets:
+total 12K
+drwxrwxr-x 3 me me 4.0K May 18 17:21 [00;34m.[0m/
+drwxrwxr-x 5 me me 4.0K May 20 12:16 [00;34m..[0m/
+drwxrwxr-x 2 me me 4.0K May 18 17:21 [00;34micons[0m/
+
+./assets/icons:
+total 8.0K
+drwxrwxr-x 2 me me 4.0K May 18 17:21 [00;34m.[0m/
+drwxrwxr-x 3 me me 4.0K May 18 17:21 [00;34m..[0m/
+-rw-rw-r-- 1 me me    0 May 18 17:21 [01;35mhome.png[0m
+-rw-rw-r-- 1 me me    0 May 18 17:21 [01;35msearch.png[0m
+-rw-rw-r-- 1 me me    0 May 18 17:21 [01;35msettings.png[0m
+
+./config:
+total 12K
+drwxrwxr-x 2 me me 4.0K May 18 17:21 [00;34m.[0m/
+drwxrwxr-x 5 me me 4.0K May 20 12:16 [00;34m..[0m/
+-rw-rw-r-- 1 me me  471 May 18 17:21 [00msettings.js[0m
+
+./data:
+total 68K
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34m.[0m/
+drwxrwxr-x 5 me me 4.0K May 20 12:16 [00;34m..[0m/
+drwxrwxr-x 2 me me 4.0K May 20 01:53 [00;34mcommands[0m/
+drwxrwxr-x 2 me me 4.0K May 19 20:22 [00;34mexamples[0m/
+drwxrwxr-x 2 me me 4.0K May 19 20:19 [00;34mhelp[0m/
+drwxrwxr-x 2 me me 4.0K May 20 01:50 [00;34mhtml[0m/
+drwxrwxr-x 2 me me 4.0K May 19 20:20 [00;34mman[0m/
+drwxrwxr-x 2 me me 4.0K May 19 20:12 [00;34moptions[0m/
+-rwxrwxr-x 1 me me 4.3K May 19 19:43 [01;32mman-help2html.py[0m*
+-rwxrwxr-x 1 me me 4.3K May 20 01:16 [01;32mman-help2html.py.bak[0m*
+-rw-r--r-- 1 me me  15K May 20 01:51 [00mman-help2html_v2.py[0m
+-rw-rw-r-- 1 me me 1.4K May 19 20:11 [00mparse-options.py[0m
+
+./data/commands:
+total 24K
+drwxrwxr-x 2 me me 4.0K May 20 01:53 [00;34m.[0m/
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34m..[0m/
+-rw-rw-r-- 1 me me  15K May 20 01:54 [00mfind.html[0m
+
+./data/examples:
+total 12K
+drwxrwxr-x 2 me me 4.0K May 19 20:22 [00;34m.[0m/
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34m..[0m/
+-rw-rw-r-- 1 me me  548 May 19 20:22 [00mfind-examples.txt[0m
+
+./data/help:
+total 20K
+drwxrwxr-x 2 me me 4.0K May 19 20:19 [00;34m.[0m/
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34m..[0m/
+-rw-rw-r-- 1 me me 2.1K May 19 05:10 [00mfind-help.txt[0m
+-rw-rw-r-- 1 me me 7.6K May 19 20:19 [00mls-help.txt[0m
+
+./data/html:
+total 24K
+drwxrwxr-x 2 me me 4.0K May 20 01:50 [00;34m.[0m/
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34m..[0m/
+-rw-rw-r-- 1 me me  15K May 20 01:50 [00mfind.html[0m
+
+./data/man:
+total 112K
+drwxrwxr-x 2 me me 4.0K May 19 20:20 [00;34m.[0m/
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34m..[0m/
+-rw-rw-r-- 1 me me  92K May 19 05:10 [00mfind-man.txt[0m
+-rw-rw-r-- 1 me me 8.1K May 19 20:19 [00mls-man.txt[0m
+
+./data/options:
+total 12K
+drwxrwxr-x 2 me me 4.0K May 19 20:12 [00;34m.[0m/
+drwxrwxr-x 8 me me 4.0K May 20 01:50 [00;34m..[0m/
+-rw-rw-r-- 1 me me 1.1K May 19 20:12 [00mfind-options.txt[0m
